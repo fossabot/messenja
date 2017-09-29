@@ -1,0 +1,20 @@
+{
+  "name": "messenja",
+  "version": "0.3.1",
+  "description": "Framework based on Express to build chatbots",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "start": "node index.js"
+  },
+  "keywords": ["chatbot", "express", "nodejs"],
+  "author": "Tim Izzo / 5ika",
+  "license": "MIT",
+  "dependencies": {
+    "apiai": "^4.0.3",
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.0",
+    "express": "^4.15.4",
+    "node-wget": "^0.4.2"
+  }
+}

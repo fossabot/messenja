@@ -1,0 +1,6 @@
+node_modules/
+jsdoc/
+config.json
+cache/
+site/framework/php-error.log
+site/silverstripe-errors.log

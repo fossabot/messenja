@@ -1,0 +1,16 @@
+{
+  "server": {
+    "url": "",
+    "port": 3333
+  },
+  "telegram": {
+    "token": ""
+  },
+  "facebook": {
+    "verify_token": "",
+    "token": ""
+  },
+  "api_ai": {
+    "token": ""
+  }
+}
