@@ -1,5 +1,6 @@
 const wget = require("node-wget");
 const axios = require("axios");
+const querystring = require("querystring");
 const fs = require("fs");
 const { sendTelegram, sendFacebook } = require("./sender");
 const config = require("./config.js");
@@ -37,7 +38,26 @@ const getFacebookProfile = id =>
     )
     .then(res => res.data);
 
+const getSlackUserToken = code => {
+  return axios({
+    method: "post",
+    url: `https://slack.com/api/oauth.access`,
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    data: querystring.stringify({
+      client_id: config.slack.client_id,
+      client_secret: config.slack.client_secret,
+      code,
+      redirect_uri: `${config.server.url}/slack/oauth`,
+    }),
+  }).then(res => {
+    if (res.data.hasOwnProperty("error"))
+      throw { code: "SLACK GET ACCESS_TOKEN", message: res.data.error };
+    return res.data;
+  });
+};
+
 module.exports = {
   getTelegramURL,
   getFacebookProfile,
+  getSlackUserToken,
 };

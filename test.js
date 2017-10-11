@@ -1,5 +1,42 @@
 // Config
 const messenja = require(".");
+const slackUsers = require("./slack-users.json");
+const fs = require("fs");
+
+const auth = {
+  slack: {
+    /*
+    slackData = {
+    "ok": true,
+    "access_token",
+    "scope":,
+    "user_id":,
+    "team_name": "Messenja",
+    "team_id": "T7FH0BLQY"
+}
+     */
+    setUserToken: slackData => {
+      slackUsers[slackData.user_id] = slackData.access_token;
+      const newContent = Object.assign({}, slackUsers, {
+        [slackData.user_id]: slackData,
+      });
+      fs.writeFile("./slack-users.json", JSON.stringify(newContent), function(
+        err,
+        data
+      ) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log(data);
+      });
+    },
+  },
+};
+
+const handleErrors = (error, res) => {
+  console.log({ error });
+  res.json(error);
+};
 
 const inline = {
   inline: [
@@ -13,29 +50,19 @@ const keyboard = {
   keyboard: [{ label: "Send location", location: true }, { label: "Key 2" }],
 };
 
-const facebookRaw = {
-  text: "Hey, je suis *raw*",
-};
-const TelegramRaw = {
-  text: "Hey, je suis  _raw_",
-  parse_mode: "Markdown",
-};
+messenja(
+  (request, response) => {
+    console.log(JSON.stringify(request));
+    if (request.isCallback) {
+      response.sendText("Je suis Callback");
+      response.sendText(request.data);
+      return;
+    }
 
-messenja((request, response) => {
-  console.log(JSON.stringify(request));
-  if (request.isCallback) {
-    response.sendText("Je suis Callback");
-    response.sendText(request.data);
-    return;
-  }
-
-  response.sendRaw(
-    request.service === "telegram" ? TelegramRaw : facebookRaw,
-    "sendMessage"
-  );
-
-  response.sendLocation({ latitude: 46.2050295, longitude: 6.1440885 }, inline);
-
-  if (request.content.api_ai)
-    response.sendText(request.content.api_ai.fulfillment.speech, keyboard);
-});
+    if (request.content.api_ai)
+      response.sendText(request.content.api_ai.fulfillment.speech, keyboard);
+    else response.sendText("Coucou", keyboard);
+  },
+  auth,
+  handleErrors
+);

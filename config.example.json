@@ -10,7 +10,15 @@
     "verify_token": "",
     "token": ""
   },
+  "slack": {
+    "verify_token": "",
+    "verify_state": "",
+    "client_id": "253578394848.255319771783",
+    "client_secret": "",
+    "scopes": ["chat:write:bot"]
+  },
   "api_ai": {
     "token": ""
-  }
+  },
+  "debug": false
 }
