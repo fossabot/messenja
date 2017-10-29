@@ -7,7 +7,7 @@ module.exports = data =>
       // Get request context
       const request = {
         user_id: "telegram-" + data.message.from.id,
-        user: data.message.from.first_name + " " + data.message.from.last_name,
+        user: data.message.from.first_name,
         chat_id: data.message.from.id,
         date: data.message.date,
         service: "telegram",
