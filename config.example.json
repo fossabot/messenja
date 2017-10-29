@@ -10,7 +10,7 @@
     "verify_token": "",
     "token": ""
   },
-  "api_ai": {
+  "dialogflow": {
     "token": ""
   },
   "debug": false

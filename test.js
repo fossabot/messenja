@@ -26,6 +26,6 @@ messenja((request, response) => {
     response.sendText(request.data);
     return;
   }
-  if (request.api_ai) response.sendText("API AI");
+  if (request.dialogflow) response.sendText("Dialogflow");
   response.sendText("Coucou", keyboard);
 });

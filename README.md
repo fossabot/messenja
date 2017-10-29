@@ -54,7 +54,7 @@ messenja((request, response) => {
     "image": "url",
     "video": "url",
     "location": {
-      "latitude": "number", 
+      "latitude": "number",
       "longitude": "number"}
   }
 }
@@ -79,22 +79,22 @@ Si le type de requête n'est pas reconnu, Messenja retourne un champ `raw` avec 
 Lorsqu'un utilisateur clique sur un bouton avec une `value` associée, le serveur reçoit une requête de type *callback*. Il est ainsi possible de différencier les messages standards des messages de callback de cette manière :
 
 ```javascript
-if (request.isCallback) response.sendText(`Vous avez cliqué sur un bouton : ${request.data}`); 
+if (request.isCallback) response.sendText(`Vous avez cliqué sur un bouton : ${request.data}`);
 else response.sendText('Hey ! Que choisis-tu ?', keyboard);
 ```
 
 Dans ce cas, le champ `content` est remplacé par un champ `data` contenant la valeur associée au bouton.
 
-### API.ai
+### Dialogflow
 
-Il est possible de lier votre application à un agent sur [API.ai](https://api.ai/). Pour cela, il suffit de fournir le *Client access token* de l'agent dans le fichier `config.json`. Si Messenja trouve un token, il ajoutera la réponse de API.ai à chacune des requêtes de type texte dans le champ `content` :
+Il est possible de lier votre application à un agent sur [Dialogflow](https://dialogflow.com/). Pour cela, il suffit de fournir le *Client access token* de l'agent dans le fichier `config.json`. Si Messenja trouve un token, il ajoutera la réponse de Dialogflow à chacune des requêtes de type texte dans le champ `content` :
 
 ```Json
 {
   ...
   "content": {
     "text": "Hey !",
-  	"api_ai": DATA API.ai
+  	"dialogflow": DATA Dialogflow
 	}
 }
 ```

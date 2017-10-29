@@ -1,4 +1,4 @@
-const apiAi = require("./api_ai");
+const dialogflow = require("./dialogflow");
 
 const getUsername = messageFrom => {
   const firstName = messageFrom.first_name ? messageFrom.first_name : "";
@@ -22,11 +22,11 @@ module.exports = data =>
 
       // Request is a text
       if (data.message.hasOwnProperty("text")) {
-        return apiAi(data.message.text, data.message.from.id)
-          .then(resultApiAi => {
+        return dialogflow(data.message.text, data.message.from.id)
+          .then(resultDialogflow => {
             const content = {
               text: data.message.text,
-              api_ai: resultApiAi,
+              dialogflow: resultDialogflow,
             };
             return resolve(
               Object.assign({}, request, {

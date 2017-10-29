@@ -1,6 +1,6 @@
-const apiai = require("apiai");
-const config = require("../config.js").api_ai;
-const app = config.token ? apiai(config.token) : false;
+const dialogflow = require("apiai");
+const config = require("../config.js").dialogflow;
+const app = config.token ? dialogflow(config.token) : false;
 
 module.exports = (text, sessionId) =>
   new Promise((resolve, reject) => {
