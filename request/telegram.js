@@ -1,5 +1,11 @@
 const apiAi = require("./api_ai");
 
+const getUsername = messageFrom => {
+  const firstName = messageFrom.first_name ? messageFrom.first_name : "";
+  const lastName = messageFrom.last_name ? " " + messageFrom.last_name : "";
+  return firstName + lastName;
+};
+
 module.exports = data =>
   new Promise((resolve, reject) => {
     // If request is a message
@@ -7,7 +13,7 @@ module.exports = data =>
       // Get request context
       const request = {
         user_id: "telegram-" + data.message.from.id,
-        user: data.message.from.first_name,
+        user: getUsername(data.message.from),
         chat_id: data.message.from.id,
         date: data.message.date,
         service: "telegram",
@@ -85,10 +91,7 @@ module.exports = data =>
       // Get request context
       const request = {
         user_id: "telegram" + data.callback_query.from.id,
-        user:
-          data.callback_query.from.first_name +
-          " " +
-          data.callback_query.from.last_name,
+        user: getUsername(data.callback_query.from),
         chat_id: data.callback_query.from.id,
         date: data.callback_query.date,
         service: "telegram",

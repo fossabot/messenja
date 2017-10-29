@@ -49,11 +49,18 @@ app.use("/facebook", (req, res, next) => {
  */
 module.exports = fn => {
   app.post("/:messenger", (req, res) => {
+    if (config.debug)
+      console.log(
+        JSON.stringify({
+          [req.params.messenger]: req.body,
+        })
+      );
     request(req.params.messenger, req.body)
       .then(userRequest => {
         const botResponse = response[req.params.messenger](userRequest);
         try {
-          fn(userRequest, botResponse, utils);
+          if (Object.keys(userRequest).length !== 0)
+            fn(userRequest, botResponse, utils);
         } catch (e) {
           console.log(e);
         }

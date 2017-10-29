@@ -26,8 +26,6 @@ messenja((request, response) => {
     response.sendText(request.data);
     return;
   }
-
-  if (request.content.api_ai)
-    response.sendText(request.content.api_ai.fulfillment.speech, keyboard);
-  else response.sendText("Coucou", keyboard);
+  if (request.api_ai) response.sendText("API AI");
+  response.sendText("Coucou", keyboard);
 });

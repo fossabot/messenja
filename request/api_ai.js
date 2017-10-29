@@ -4,7 +4,7 @@ const app = config.token ? apiai(config.token) : false;
 
 module.exports = (text, sessionId) =>
   new Promise((resolve, reject) => {
-    if (!app) return resolve({});
+    if (!app) return resolve(null);
 
     const req = app.textRequest(text, {
       sessionId,
