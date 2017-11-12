@@ -14,7 +14,7 @@ module.exports = data =>
         isCallback: false,
       };
       // Request is a text
-      if (message.hasOwnProperty("text")) {
+      if (message && message.hasOwnProperty("text")) {
         return dialogflow(message.text, entry.messaging[0].sender.id)
           .then(resultDialogflow => {
             const content = {
@@ -31,6 +31,7 @@ module.exports = data =>
       }
       // Request has an attachment
       if (
+        message &&
         message.hasOwnProperty("attachments") &&
         message.attachments.length > 0
       ) {

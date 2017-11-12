@@ -1,6 +1,6 @@
 # Messenja
 
-Messenja est un framework qui permet de simplifier la création de bot sur Facebook Messenger et Telegram ainsi que prochainement Slack.
+Messenja est un framework qui permet de simplifier la création de bot sur Facebook Messenger et Telegram.
 
 Il est composé de deux parties :
 
