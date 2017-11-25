@@ -1,6 +1,6 @@
 {
   "name": "messenja",
-  "version": "0.3.6",
+  "version": "0.3.6.1",
   "description": "Framework based on Express to build chatbots",
   "main": "index.js",
   "scripts": {

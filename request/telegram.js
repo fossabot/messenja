@@ -1,6 +1,6 @@
 const dialogflow = require("./dialogflow");
 
-const sanitizeString = string => string.replace(/(`|\[|\])/g, "");
+const sanitizeString = string => string.replace(/(`|\*|\[|\])/g, "");
 
 const getUsername = messageFrom => {
   const firstName = messageFrom.first_name ? messageFrom.first_name : "";
