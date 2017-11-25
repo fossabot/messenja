@@ -4,3 +4,4 @@ config.json
 cache/
 site/framework/php-error.log
 site/silverstripe-errors.log
+test.js

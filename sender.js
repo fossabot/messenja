@@ -8,7 +8,7 @@ const sendTelegram = (url, data) => {
   if (config.debug) console.log(JSON.stringify({ dataSentToTelegram: data }));
   return axios
     .post(TELEGRAM_URL + "/" + url, data)
-    .catch(e => console.log("Erreur lors de l'envoi de la réponse"));
+    .catch(e => console.log("Erreur lors de l'envoi de la réponse" + e));
 };
 
 const FACEBOOK_TOKEN = config.facebook.token;
