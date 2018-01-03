@@ -1,4 +1,6 @@
 # Messenja
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F5ika%2Fmessenja.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2F5ika%2Fmessenja?ref=badge_shield)
+
 
 Messenja est un framework qui permet de simplifier la création de bot sur Facebook Messenger et Telegram.
 
@@ -268,3 +270,7 @@ app.get('/hello', (req, res) => {
 
 - Commenter le code
 - Itérer les `entries` et `messaging `pour Facebook Messenger pour ne pas rater des messages en cas de ralentissement du service Facebook.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2F5ika%2Fmessenja.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2F5ika%2Fmessenja?ref=badge_large)
